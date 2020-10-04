@@ -1,27 +1,21 @@
 import React from 'react';
 import '../css/TextDisplay.css'
-import axios from 'axios'
-
+import {GetRandomString} from '../lib/randomSentence.js'
 class TextDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: "This is a normal text",
+            text: GetRandomString(5),
             words: [], // array of objects {value, color}
         }
       
     }
     
     componentDidMount() {
-        //TODO: This api gets the quote of the day.
-        // Replace the API with some other free api which generates random text  
-        axios.get("https://quotes.rest/qod?language=en").then(response => {
-            this.setState({ text: response.data.contents.quotes[0].quote });
-            this.setState({words: this.state.text.split(' ').map(word => {
-                return {value: word, bgColor: "#fff"}
-            })})
-          });
-       
+          this.setState(
+              {words: this.state.text.split(' ').map(word => {
+            return {value: word, bgColor: "#fff"}
+        })})
     }
 
     static getDerivedStateFromProps = (props, state) => {
