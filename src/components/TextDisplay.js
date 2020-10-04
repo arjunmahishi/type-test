@@ -8,7 +8,6 @@ class TextDisplay extends React.Component {
             text: GetRandomString(5),
             words: [], // array of objects {value, color}
         }
-      
     }
     
     componentDidMount() {
