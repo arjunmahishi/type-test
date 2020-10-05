@@ -1,17 +1,18 @@
 import React from 'react';
 import '../css/TextDisplay.css'
-
+import {GetRandomString} from '../lib/randomSentence.js'
 class TextDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: "this is a sample text",
+            text: GetRandomString(5),
             words: [], // array of objects {value, color}
         }
     }
     
     componentDidMount() {
-        this.setState({words: this.state.text.split(' ').map(word => {
+          this.setState(
+              {words: this.state.text.split(' ').map(word => {
             return {value: word, bgColor: "#fff"}
         })})
     }
