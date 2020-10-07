@@ -1,0 +1,1 @@
+export const breakText = (text) => text.split(' ').filter(ele => ele !== '');

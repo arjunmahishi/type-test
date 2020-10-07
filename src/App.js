@@ -18,7 +18,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <TextDisplay typedText={this.state.typedText} />
-        <textarea id="text-input" onInput={this.handleInput}></textarea>
+        <input id="text-input" className="text-input" onInput={this.handleInput} />
       </div>
     );
   }

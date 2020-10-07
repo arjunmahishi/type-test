@@ -1,3 +1,5 @@
 .word {
-    margin-right: 4px;
+    margin-right: 20px;
+    padding: 25px;
+    border-radius: 50%;
 }

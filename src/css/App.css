@@ -1,7 +1,7 @@
 .App {
   text-align: center;
-  margin-top: 20rem;
-  line-height: 5rem;
+  margin-top: 5rem;
+  line-height: 25rem;
 }
 
 .App-logo {
@@ -37,4 +37,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.text-input {
+  width: 50%;
+  margin: 4px;
+}
+
+.words-holder {
+  font-size: xx-large;
 }
