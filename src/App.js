@@ -14,11 +14,15 @@ class App extends React.Component {
     this.setState({typedText: e.target.value})
   }
 
+  resetInput = () => this.setState({
+    typedText: "",
+  })
+
   render() {
     return (
       <div className="App">
-        <TextDisplay typedText={this.state.typedText} />
-        <input id="text-input" className="text-input" onInput={this.handleInput} />
+        <TextDisplay typedText={this.state.typedText} resetCallback={this.resetInput} />
+        <input value={this.state.typedText} id="text-input" className="text-input" onChange={this.handleInput} />
       </div>
     );
   }
