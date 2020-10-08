@@ -3,9 +3,9 @@ import '../css/TextDisplay.css'
 import { getRandomWords } from '../lib/randomWords'
 
 const colors = {
-    correctWord: "rgba(119, 219, 119, 0.37)",
-    activeWord: "rgba(255, 0, 0, 0.3)",
-    inActiveWord: "#fff",
+    correctWord: "rgba(119, 219, 119, 0.1)",
+    activeWord: "rgba(255, 0, 0, 0.1)",
+    inActiveWord: "#202020",
 }
 
 class TextDisplay extends React.Component {
@@ -59,7 +59,7 @@ class TextDisplay extends React.Component {
     }
 
     getWordsObjects = (words) => words.map(word => {
-        return {value: word, bgColor: "#fff", correct: false}
+        return {value: word, bgColor: colors.inActiveWord, correct: false}
     })
 
     render() {

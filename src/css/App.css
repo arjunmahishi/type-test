@@ -1,7 +1,11 @@
+body {
+  background-color: #202020;
+}
+
 .App {
   text-align: center;
-  margin-top: 5rem;
-  line-height: 25rem;
+  margin-top: 12rem;
+  line-height: 10rem;
 }
 
 .App-logo {
@@ -42,8 +46,18 @@
 .text-input {
   width: 50%;
   margin: 4px;
+  border-style: none;
+  border-bottom-style: dashed;
+  font-size: xx-large;
+  text-align: center;
+  background-color: #202020;
+  color: #ffffff;
 }
 
 .words-holder {
   font-size: xx-large;
+}
+
+.speed {
+  color: #fff;
 }
