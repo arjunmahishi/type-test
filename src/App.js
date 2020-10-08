@@ -21,7 +21,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <TextDisplay typedText={this.state.typedText} resetCallback={this.resetInput} />
+        <TextDisplay 
+          typedText={this.state.typedText} 
+          resetCallback={this.resetInput}
+          numberOfWords={5} 
+        />
         <input value={this.state.typedText} id="text-input" className="text-input" onChange={this.handleInput} />
       </div>
     );

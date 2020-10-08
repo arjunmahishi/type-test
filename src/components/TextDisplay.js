@@ -5,12 +5,13 @@ import { getRandomWords } from '../lib/randomWords'
 const colors = {
     correctWord: "rgba(119, 219, 119, 0.37)",
     activeWord: "rgba(255, 0, 0, 0.3)",
+    inActiveWord: "#fff",
 }
 
 class TextDisplay extends React.Component {
     constructor(props) {
         super(props);
-        let randomWords = getRandomWords(7)
+        let randomWords = getRandomWords(this.props.numberOfWords)
         this.state = {
             words: randomWords,
             wordObjects: this.getWordsObjects(randomWords),
@@ -28,11 +29,17 @@ class TextDisplay extends React.Component {
     handlePropsChange = (newProps) => {
         let typedWords = this.breakText(newProps.typedText);
         let displayedWords = this.state.wordObjects;
-        for (let i=0;i < Math.min(typedWords.length, displayedWords.length);i++) {
-            displayedWords[i].bgColor = typedWords[i] === displayedWords[i].value ? 
-            colors.correctWord: colors.activeWord;
-            displayedWords[i].correct = typedWords[i] === displayedWords[i].value
-        }
+
+        displayedWords.map((wordObj, i) => {
+            if (i < typedWords.length) {
+                wordObj.correct = typedWords[i] === wordObj.value
+                wordObj.bgColor = wordObj.correct ? colors.correctWord : colors.activeWord
+                return wordObj
+            }
+            wordObj.bgColor = colors.inActiveWord
+            return wordObj
+        })
+        
         this.setState({wordObjects: displayedWords})
         if (this.isComplete()) {
             this.resetWords()
@@ -43,7 +50,7 @@ class TextDisplay extends React.Component {
         this.state.wordObjects[this.state.wordObjects.length-1].correct
 
     resetWords = () => {
-        let randomWords = getRandomWords(7)
+        let randomWords = getRandomWords(this.props.numberOfWords)
         this.setState({
             words: randomWords,
             wordObjects: this.getWordsObjects(randomWords),
