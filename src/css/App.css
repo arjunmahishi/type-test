@@ -4,8 +4,8 @@ body {
 
 .App {
   text-align: center;
-  margin-top: 12rem;
-  line-height: 10rem;
+  margin-top: 2rem;
+  line-height: 7rem;
 }
 
 .App-logo {
@@ -60,4 +60,14 @@ body {
 
 .speed {
   color: #fff;
+}
+
+.appName{
+  text-align: center;
+  font-size: 5rem;
+}
+
+.gitBtn{
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
