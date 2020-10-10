@@ -1,9 +1,9 @@
 import { words } from './wordBank'
 
 export const wordStates = {
-    CORRECT: 1,
-    WRONG: 2,
-    INACTIVE: 3,
+    CORRECT: "correct",
+    WRONG: "wrong",
+    INACTIVE: "inactive",
 }
 
 // Returns a string with random words 
@@ -25,3 +25,5 @@ export const evaluateTypedWords = (displayedWords, typedWords) => displayedWords
     wordObj.state = wordStates.INACTIVE
     return wordObj
 })
+
+export const breakText = (text) => text.split(' ').filter(ele => ele !== '');

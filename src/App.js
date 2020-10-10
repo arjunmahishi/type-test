@@ -2,19 +2,16 @@ import React from 'react';
 import GitHubButton from "react-github-btn"
 import TextDisplay from './components/TextDisplay'
 import './css/App.css'
-import { calculateSpeed } from "./controllers/speed"
-import { startTimer, stopTimer } from "./controllers/timer"
+import { calculateSpeed } from "./lib/speed"
+import { startTimer, stopTimer } from "./lib/timer"
+import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib/wordOperations';
 
-const NumberOfWords = 5
+const numberOfWords = 5
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      typedText: "",
-      speed: 0,
-      wordsToDisplay: [{value: "test1", state: "wrong"}],
-    }
+    this.state = this.freshState()
     this.timerStarted = false
   }
 
@@ -23,15 +20,36 @@ class App extends React.Component {
       startTimer()
     }
     this.timerStarted = true
-    this.setState({typedText: e.target.value})
+    let inputWords = breakText(e.target.value)
+    let wordsToDisplay = evaluateTypedWords(this.state.randomWords, inputWords)
+    this.setState({
+      typedText: e.target.value,
+      wordsToDisplay: wordsToDisplay,
+    })
+    if (this.isComplete(wordsToDisplay, inputWords)) {
+      this.reset()
+    }
   }
 
-  resetInput = () => {
-    this.setState({
-      typedText: "",
-      speed: calculateSpeed(NumberOfWords, stopTimer()),
-    })
+  reset = () => {
+    let state = this.freshState()
+    state.speed = calculateSpeed(numberOfWords, stopTimer())
+    this.setState(state)
     this.timerStarted = false
+  }
+
+
+  isComplete = (wordsToDisplay, inputWords) => inputWords.length > this.state.randomWords.length || 
+    wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
+
+  freshState = () => {
+    let randomWords = getRandomWords(numberOfWords)
+    return {
+      typedText: "",
+      speed: 0,
+      randomWords: randomWords,
+      wordsToDisplay: evaluateTypedWords(randomWords, []),
+    }
   }
 
   render() {
@@ -43,11 +61,7 @@ class App extends React.Component {
       <h1 className="appName">type-test</h1>
       <div className="App">       
         <h2 className="speed">{this.state.speed} wpm</h2>
-        <TextDisplay 
-          typedText={this.state.typedText} 
-          resetCallback={this.resetInput}
-          words={this.state.wordsToDisplay}
-        />
+        <TextDisplay words={this.state.wordsToDisplay} />
         <input value={this.state.typedText} 
           id="text-input" 
           className="text-input" 
