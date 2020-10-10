@@ -1,5 +1,23 @@
+
+html {
+  --primary-color: #fff;
+  --secondary-color: #282c34;
+}
+
+/* Redefine our color variables if the data-theme attr
+  value is "dark
+*/
+
+html[data-theme="dark"] {
+  --primary-color: #282c34;
+  --secondary-color: #fff;
+}
+
+
+
+
 body {
-  background-color: #202020;
+  background-color: var(--secondary-color)
 }
 
 .App {
@@ -20,14 +38,14 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--secondary-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--primary-color);
 }
 
 .App-link {
@@ -50,18 +68,22 @@ body {
   border-bottom-style: dashed;
   font-size: xx-large;
   text-align: center;
-  background-color: #202020;
-  color: #ffffff;
+  background-color:var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .words-holder {
   font-size: xx-large;
 }
 
+.speed {
+  color:var(--primary-color);
+}
+
 .appName{
   text-align: center;
   font-size: 5rem;
-  color: #ffffff;
+  color: var(--primary-color);
   text-shadow: 1px 5px 0px #ffffff52;
 }
 
@@ -94,4 +116,65 @@ body {
 .reset-score:hover {
   background-color: orange;
   color: black;
+}
+
+/* CSS styling for our switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
