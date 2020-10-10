@@ -1,7 +1,8 @@
 
 html {
-  --primary-color: #fff;
-  --secondary-color: #282c34;
+  --primary-color: #282c34;
+  --secondary-color: #fff;
+
 }
 
 /* Redefine our color variables if the data-theme attr
@@ -9,8 +10,8 @@ html {
 */
 
 html[data-theme="dark"] {
-  --primary-color: #282c34;
-  --secondary-color: #fff;
+  --primary-color: #fff;
+  --secondary-color: #282c34;
 }
 
 
@@ -116,14 +117,21 @@ body {
 .reset-score:hover {
   background-color: orange;
   color: black;
+  display: flex;
+  float: right;
+  height: 34px;
+  margin-right: 10px;
 }
+
 
 /* CSS styling for our switch */
 .switch {
+  display: flex;
   position: relative;
-  display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 30px;
+  margin-right: 10px;
+  float: right;
 }
 
 .switch input {
@@ -139,7 +147,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color:var(--primary-color);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -147,17 +155,17 @@ body {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
+  height: 24px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: rgb(38, 168, 243);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked+.slider {
-  background-color: #2196F3;
+  background-color:var(--primary-color);
 }
 
 input:focus+.slider {
