@@ -65,11 +65,13 @@ body {
 .appName{
   text-align: center;
   font-size: 5rem;
+  color: #ffffff;
+  text-shadow: 1px 5px 0px #ffffff52;
 }
 
 .gitBtn{
-  margin-left: 1rem;
-  margin-top: 1rem;
+  text-align: right;
+  padding: 15px;
 }
 
 .restartBtn{
