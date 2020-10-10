@@ -1,9 +1,9 @@
 import React from 'react';
-import TextDisplay from './components/TextDisplay';
-import './css/App.css';
+import GitHubButton from "react-github-btn"
+import TextDisplay from './components/TextDisplay'
+import './css/App.css'
 import { calculateSpeed } from "./controllers/speed"
 import { startTimer, stopTimer } from "./controllers/timer"
-import GitHubButton from "react-github-btn"
 
 const NumberOfWords = 5
 
@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       typedText: "",
       speed: 0,
+      wordsToDisplay: [{value: "test1", state: "wrong"}],
     }
     this.timerStarted = false
   }
@@ -45,7 +46,7 @@ class App extends React.Component {
         <TextDisplay 
           typedText={this.state.typedText} 
           resetCallback={this.resetInput}
-          numberOfWords={NumberOfWords} 
+          words={this.state.wordsToDisplay}
         />
         <input value={this.state.typedText} 
           id="text-input" 
