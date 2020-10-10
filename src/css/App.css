@@ -65,6 +65,8 @@ body {
 .appName{
   text-align: center;
   font-size: 5rem;
+  color: #ffffff;
+  text-shadow: 1px 5px 0px #ffffff52;
 }
 
 .gitBtn{
