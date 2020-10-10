@@ -71,3 +71,8 @@ body {
   margin-left: 1rem;
   margin-top: 1rem;
 }
+
+.restartBtn{
+  float: right;
+  margin-right: 5rem;
+}
