@@ -72,9 +72,14 @@ body {
 .gitBtn{
   text-align: right;
   padding: 15px;
+  flex-direction: "row";
 }
 
-.restartBtn{
-  float: right;
-  margin-right: 5rem;
+.wpmReset{
+  display: grid
+}
+
+.speed{
+  text-align: initial;
+  grid-area: 1 / col4-start;
 }

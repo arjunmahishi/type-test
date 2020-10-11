@@ -49,10 +49,12 @@ class App extends React.Component {
       </div>
       <h1 className="appName">type-test</h1>
       
-      <Button color="secondary" className="restartBtn" onClick={this.restart}>RESTART</Button>
-     
       <div className="App">
-        <h2 className="speed">{this.state.speed} wpm</h2>             
+        <section className="wpmReset">
+           <h2 className="speed">{this.state.speed} wpm</h2>
+        <Button color="secondary" className="restartBtn" onClick={this.restart}>RESTART</Button>    
+        </section>
+         
         <TextDisplay 
           typedText={this.state.typedText}
           resetCallback={this.resetInput}
