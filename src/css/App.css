@@ -58,10 +58,6 @@ body {
   font-size: xx-large;
 }
 
-.speed {
-  color: #fff;
-}
-
 .appName{
   text-align: center;
   font-size: 5rem;
@@ -75,11 +71,27 @@ body {
   flex-direction: "row";
 }
 
-.wpmReset{
-  display: grid
+.score{
+  text-align: initial;
+  font-size: 24px;
+  color: #ffffff;
+  margin: 10px;
 }
 
-.speed{
-  text-align: initial;
-  grid-area: 1 / col4-start;
+.reset-score {
+  background: none;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10%;
+  color: orange;
+  border-color: orange;
+  margin-left: 15px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+.reset-score:hover {
+  background-color: orange;
+  color: black;
 }
