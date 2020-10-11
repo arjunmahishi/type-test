@@ -1,20 +1,18 @@
 import React from 'react';
-import TextDisplay from './components/TextDisplay';
-import './css/App.css';
-import { calculateSpeed } from "./controllers/speed"
-import { startTimer, stopTimer } from "./controllers/timer"
 import GitHubButton from "react-github-btn"
 import Button from '@material-ui/core/Button';
+import TextDisplay from './components/TextDisplay'
+import './css/App.css'
+import { calculateSpeed } from "./lib/speed"
+import { startTimer, stopTimer } from "./lib/timer"
+import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib/wordOperations';
 
-const NumberOfWords = 5
+const numberOfWords = 5
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      typedText: "",
-      speed: 0,
-    }
+    this.state = this.freshState()
     this.timerStarted = false
   }
 
@@ -23,14 +21,21 @@ class App extends React.Component {
       startTimer()
     }
     this.timerStarted = true
-    this.setState({typedText: e.target.value})
+    let inputWords = breakText(e.target.value)
+    let wordsToDisplay = evaluateTypedWords(this.state.randomWords, inputWords)
+    this.setState({
+      typedText: e.target.value,
+      wordsToDisplay: wordsToDisplay,
+    })
+    if (this.isComplete(wordsToDisplay, inputWords)) {
+      this.reset()
+    }
   }
 
-  resetInput = () => {
-    this.setState({
-      typedText: "",
-      speed: calculateSpeed(NumberOfWords, stopTimer()),
-    })
+  reset = () => {
+    let state = this.freshState()
+    state.speed = calculateSpeed(numberOfWords, stopTimer())
+    this.setState(state)
     this.timerStarted = false
   }
 
@@ -39,6 +44,18 @@ class App extends React.Component {
       typedText: "",
       speed: 0
     })
+
+  isComplete = (wordsToDisplay, inputWords) => inputWords.length > this.state.randomWords.length || 
+    wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
+
+  freshState = () => {
+    let randomWords = getRandomWords(numberOfWords)
+    return {
+      typedText: "",
+      speed: 0,
+      randomWords: randomWords,
+      wordsToDisplay: evaluateTypedWords(randomWords, []),
+    }
   }
 
   render() {
