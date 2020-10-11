@@ -1,7 +1,28 @@
+html {
+  --correct: #058A052B;
+  --wrong: #8A05052B;
+}
+
+html[data-theme="dark"] {
+  --correct: #77db772b;
+  --wrong: #db77772b;
+}
+
 .word {
     margin-right: 20px;
     padding: 25px;
-    color: #fff;
-    background-color: #202020;
+    color: var(--primary-color);
     border-radius: 10%;
+}
+
+.word-correct {
+    background-color: var(--correct);
+}
+
+.word-wrong {
+    background-color: var(--wrong);
+}
+
+.word-inactive {
+    background-color: var(--secondary-color);
 }
