@@ -1,5 +1,6 @@
 import React from 'react';
 import GitHubButton from "react-github-btn"
+import Button from '@material-ui/core/Button';
 import TextDisplay from './components/TextDisplay'
 import './css/App.css'
 import { calculateSpeed } from "./lib/speed"
@@ -38,6 +39,12 @@ class App extends React.Component {
     this.timerStarted = false
   }
 
+  restart = () =>{
+    this.setState({
+      typedText: "",
+      speed: 0
+    })
+  }
 
   isComplete = (wordsToDisplay, inputWords) => inputWords.length > this.state.randomWords.length || 
     wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
@@ -54,21 +61,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+    <>
       <div className="gitBtn">
         <GitHubButton href="https://github.com/arjunmahishi/type-test" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star arjunmahishi/type-test on GitHub">Star</GitHubButton>
       </div>
       <h1 className="appName">type-test</h1>
-      <div className="App">       
-        <h2 className="speed">{this.state.speed} wpm</h2>
+      
+      <div className="App">
+        <section className="wpmReset">
+           <h2 className="speed">{this.state.speed} wpm</h2>
+        <Button color="secondary" className="restartBtn" onClick={this.restart}>RESTART</Button>    
+        </section>
+         
         <TextDisplay words={this.state.wordsToDisplay} />
-        <input value={this.state.typedText} 
-          id="text-input" 
-          className="text-input" 
-          onChange={this.handleInput} 
+        <input value={this.state.typedText}
+          id="text-input"
+          className="text-input"
+          onChange={this.handleInput}
         />
       </div>
-      </>
+    </>
     );
   }
 }
