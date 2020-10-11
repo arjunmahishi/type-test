@@ -7,7 +7,7 @@ import { calculateSpeed } from "./lib/speed"
 import { startTimer, stopTimer } from "./lib/timer"
 import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib/wordOperations';
 
-const numberOfWords = 5
+const defaultNumberOfWords = 5
 
 class App extends React.Component {
   constructor(props) {
@@ -29,12 +29,26 @@ class App extends React.Component {
     })
     if (this.isComplete(wordsToDisplay, inputWords)) {
       this.reset()
+      this.setState({
+        speed: calculateSpeed(this.state.numberOfWords, stopTimer()),
+      })
+    }
+  }
+
+  onNumberOfWordsChange = (e) => {
+    const newNumber = parseInt(e.target.value)
+    if (newNumber > 0) {
+      this.setState(
+        {
+          numberOfWords: newNumber,
+        },
+        this.reset.bind(this),
+      )
     }
   }
 
   reset = () => {
     let state = this.freshState()
-    state.speed = calculateSpeed(numberOfWords, stopTimer())
     this.setState(state)
     this.timerStarted = false
   }
@@ -50,11 +64,15 @@ class App extends React.Component {
     wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
 
   freshState = () => {
-    let randomWords = getRandomWords(numberOfWords)
+    const numberOfWords = this.state && this.state.numberOfWords
+      ? this.state.numberOfWords
+      : defaultNumberOfWords
+    const randomWords = getRandomWords(numberOfWords)
     return {
       typedText: "",
       speed: 0,
-      randomWords: randomWords,
+      numberOfWords,
+      randomWords,
       wordsToDisplay: evaluateTypedWords(randomWords, []),
     }
   }
@@ -72,6 +90,16 @@ class App extends React.Component {
            <h2 className="speed">{this.state.speed} wpm</h2>
         <Button color="secondary" className="restartBtn" onClick={this.restart}>RESTART</Button>    
         </section>
+        <div className="word-amount">
+          <label>
+            Number of words
+            <input value={this.state.numberOfWords}
+              type="number"
+              min="1"
+              onChange={this.onNumberOfWordsChange}
+            />
+          </label>
+        </div>
          
         <TextDisplay words={this.state.wordsToDisplay} />
         <input value={this.state.typedText}

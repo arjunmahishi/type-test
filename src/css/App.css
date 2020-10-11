@@ -55,6 +55,9 @@ body {
 }
 
 .words-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   font-size: xx-large;
 }
 
@@ -82,4 +85,16 @@ body {
 .speed{
   text-align: initial;
   grid-area: 1 / col4-start;
+}
+
+.word-amount {
+  color: #fff;
+  line-height: initial;
+  font-size: 1.2rem;
+}
+
+.word-amount input {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  width: 50px;
 }

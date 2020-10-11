@@ -1,7 +1,8 @@
 .word {
-    margin-right: 20px;
-    padding: 25px;
+    margin: 4px;
+    padding: 6px;
     color: #fff;
     background-color: #202020;
     border-radius: 10%;
+    line-height: 5rem;
 }
