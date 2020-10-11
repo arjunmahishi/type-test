@@ -71,14 +71,11 @@ body {
   text-align: center;
   background-color:var(--secondary-color);
   color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .words-holder {
   font-size: xx-large;
-}
-
-.speed {
-  color:var(--primary-color);
 }
 
 .appName{
@@ -97,7 +94,7 @@ body {
 .score{
   text-align: initial;
   font-size: 24px;
-  color: #ffffff;
+  color:var(--primary-color);
   margin: 10px;
 }
 
@@ -117,10 +114,6 @@ body {
 .reset-score:hover {
   background-color: orange;
   color: black;
-  display: flex;
-  float: right;
-  height: 34px;
-  margin-right: 10px;
 }
 
 
