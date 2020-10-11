@@ -1,11 +1,11 @@
 import React from 'react';
-import GitHubButton from "react-github-btn"
 import TextDisplay from './components/TextDisplay'
 import './css/App.css'
 import { calculateScore } from "./lib/score"
 import { startTimer, stopTimer } from "./lib/timer"
 import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib/wordOperations';
 import ScoreDisplay from './components/ScoreDisplay';
+import AppHeader from './components/AppHeader';
 
 const numberOfWords = 5
 
@@ -66,21 +66,18 @@ class App extends React.Component {
 
   render() {
     return (
-    <>
-      <div className="gitBtn">
-        <GitHubButton href="https://github.com/arjunmahishi/type-test" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star arjunmahishi/type-test on GitHub">Star</GitHubButton>
-      </div>
-      <h1 className="appName">type-test</h1>
-      <div className="App">
-        <ScoreDisplay score={this.state.score} resetCallback={this.resetScore}/>
-        <TextDisplay words={this.state.wordObjs} />
-        <input value={this.state.typedText}
-          id="text-input"
-          className="text-input"
-          onChange={this.handleInput}
-        />
-      </div>
-    </>
+      <>
+        <AppHeader />
+        <div className="App">
+          <ScoreDisplay score={this.state.score} resetCallback={this.resetScore}/>
+          <TextDisplay words={this.state.wordObjs} />
+          <input value={this.state.typedText}
+            id="text-input"
+            className="text-input"
+            onChange={this.handleInput}
+          />
+        </div>
+      </>
     );
   }
 }
