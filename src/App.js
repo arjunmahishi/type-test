@@ -44,6 +44,7 @@ class App extends React.Component {
       typedText: "",
       speed: 0
     })
+  }
 
   isComplete = (wordsToDisplay, inputWords) => inputWords.length > this.state.randomWords.length || 
     wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
@@ -72,11 +73,7 @@ class App extends React.Component {
         <Button color="secondary" className="restartBtn" onClick={this.restart}>RESTART</Button>    
         </section>
          
-        <TextDisplay 
-          typedText={this.state.typedText}
-          resetCallback={this.resetInput}
-          numberOfWords={NumberOfWords}
-        />
+        <TextDisplay words={this.state.wordsToDisplay} />
         <input value={this.state.typedText}
           id="text-input"
           className="text-input"
