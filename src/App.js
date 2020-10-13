@@ -1,7 +1,7 @@
 import React from 'react';
 import TextDisplay from './components/TextDisplay'
 import './css/App.css'
-import { calculateScore } from "./lib/score"
+import { calculateScore, resetScore } from "./lib/score"
 import { startTimer, stopTimer } from "./lib/timer"
 import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib/wordOperations';
 import ScoreDisplay from './components/ScoreDisplay';
@@ -45,10 +45,11 @@ class App extends React.Component {
     this.timerStarted = false
   }
 
-  resetScore = () =>{
+  handleResetScore = () =>{
     this.setState({
       score: this.freshState().score,
     })
+    resetScore()
   }
 
   isComplete = (wordsToDisplay, inputWords) => inputWords.length > this.state.randomWords.length || 
@@ -69,7 +70,7 @@ class App extends React.Component {
       <>
         <AppHeader />
         <div className="App">
-          <ScoreDisplay score={this.state.score} resetCallback={this.resetScore}/>
+          <ScoreDisplay score={this.state.score} resetCallback={this.handleResetScore}/>
           <TextDisplay words={this.state.wordObjs} />
           <input value={this.state.typedText}
             id="text-input"
