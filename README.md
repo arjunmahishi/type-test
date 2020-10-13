@@ -1,4 +1,5 @@
 # type-test
+![Tests](https://github.com/arjunmahishi/type-test/workflows/Run%20tests/badge.svg)
 
 ## To run the project
 
