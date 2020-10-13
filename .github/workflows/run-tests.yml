@@ -11,4 +11,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run tests
-        run: CI=true yarn run test
+        run: |
+          yarn
+          CI=true yarn run test
