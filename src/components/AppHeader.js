@@ -6,15 +6,15 @@ export default class AppHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: localStorage.getItem("theme") === "dark",
-            theme: localStorage.getItem("theme"),
+            checked: true,
+            theme: localStorage.getItem("theme") || "dark",
         }
     }
 
     componentDidMount() {
         document
         .getElementsByTagName("HTML")[0]
-        .setAttribute("data-theme", localStorage.getItem("theme"));
+        .setAttribute("data-theme", this.state.theme);
     }
 
     toggleThemeChange = () => {
