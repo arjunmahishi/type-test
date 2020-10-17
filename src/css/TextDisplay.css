@@ -9,10 +9,11 @@ html[data-theme="dark"] {
 }
 
 .word {
-    margin-right: 20px;
-    padding: 25px;
+    margin: 4px;
+    padding: 6px;
     color: var(--primary-color);
     border-radius: 10%;
+    line-height: 5rem;
 }
 
 .word-correct {
