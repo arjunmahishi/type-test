@@ -8,14 +8,14 @@ export const wordStates = {
 
 // Returns a string with random words 
 export const getRandomWords = (length) => {
-    let arr = [];
+    let arr = "";
     while (length--) { 
-        arr.push(words[Math.floor(Math.random() * words.length)])
+        arr += words[Math.floor(Math.random() * words.length)] + " "
     }
-    return arr
+    return arr.trim()
 }
 
-export const evaluateTypedWords = (displayedWords, typedWords) => displayedWords.map((word, i) => {
+export const evaluateTypedWords = (displayedWords, typedWords) => displayedWords.split('').map((word, i) => {
     let wordObj = {value: word, state: null}
     if (i < typedWords.length) {
         wordObj.state = typedWords[i] === word ?
@@ -26,4 +26,4 @@ export const evaluateTypedWords = (displayedWords, typedWords) => displayedWords
     return wordObj
 })
 
-export const breakText = (text) => text.split(' ').filter(ele => ele !== '');
+export const breakText = (text) => text.split('').filter(ele => ele !== '');

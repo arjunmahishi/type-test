@@ -4,11 +4,11 @@ import '../css/TextDisplay.css'
 export default function TextDisplay(props) {
     return (
         <div className="words-holder">
-            {props.words.map((word, id) => 
+            {props.words.map((letter, id) => 
                 <span 
-                className={"word word-" + word.state} 
+                className={"letter letter-" + letter.state + (letter.value === " " ? " letter-space" : "")} 
                 key={id}
-                >{word.value}</span>
+                >{letter.value}</span>
             )} 
         </div>
     )

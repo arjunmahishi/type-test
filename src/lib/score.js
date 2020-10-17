@@ -5,8 +5,8 @@ var noOfRounds = 0;
 var highestSpeed = 0;
 var lowestSpeed = 99999;
 
-export const calculateScore = (wordObjs, timeTaken) => {
-    let speed = calculateSpeed(wordObjs.length, timeTaken)
+export const calculateScore = (wordObjs, timeTaken, noOfWords) => {
+    let speed = calculateSpeed(noOfWords, timeTaken)
     let accu = calculateAccuracy(wordObjs)
     return {
         speed: speed,
@@ -33,6 +33,6 @@ const calculateSpeed = (noOfWords, sec) => {
     return avgSpeed
 }
 
-const calculateAccuracy = (wordObjs) => 100 * (
+const calculateAccuracy = (wordObjs) => Math.round(100 * (
     wordObjs.filter(obj => obj.state === wordStates.CORRECT).length / wordObjs.length
-)
+))

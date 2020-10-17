@@ -8,21 +8,18 @@ html[data-theme="dark"] {
   --wrong: #db77772b;
 }
 
-.word {
-    margin-right: 20px;
-    padding: 25px;
-    color: var(--primary-color);
-    border-radius: 10%;
+.letter {
+  color: var(--primary-color);
 }
 
-.word-correct {
-    background-color: var(--correct);
+.letter-correct {
+  background-color: var(--correct);
 }
 
-.word-wrong {
-    background-color: var(--wrong);
+.letter-wrong {
+  background-color: var(--wrong);
 }
 
-.word-inactive {
-    background-color: var(--secondary-color);
+.letter-inactive {
+  background-color: var(--secondary-color);
 }

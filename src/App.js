@@ -40,7 +40,7 @@ class App extends React.Component {
 
   reset = (wordObjs) => {
     let state = this.freshState()
-    state.score = calculateScore(wordObjs, stopTimer())
+    state.score = calculateScore(wordObjs, stopTimer(), numberOfWords)
     this.setState(state)
     this.timerStarted = false
   }
