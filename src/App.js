@@ -89,7 +89,7 @@ class App extends React.Component {
         <AppHeader />
         <div className="App">
           <ScoreDisplay score={this.state.score} resetCallback={this.handleResetScore}/>
-          <div className="word-amount">
+          <div hidden className="word-amount">
             <label>
               Number of words
               <input value={this.state.numberOfWords}
