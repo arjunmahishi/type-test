@@ -7,7 +7,7 @@ import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib
 import ScoreDisplay from './components/ScoreDisplay';
 import AppHeader from './components/AppHeader';
 
-const defaultNumberOfWords = 5
+const numberOfWords = 5
 
 class App extends React.Component {
   constructor(props) {
@@ -27,10 +27,7 @@ class App extends React.Component {
 
     // check if the round is complete
     if (this.isComplete(wordObjs, inputWords)) {
-      this.reset(wordObjs)
-      this.setState({
-        score: calculateScore(wordObjs, stopTimer())
-      })
+      this.initNextRound(wordObjs)
       return
     }
 
@@ -41,20 +38,9 @@ class App extends React.Component {
     })
   }
 
-  onNumberOfWordsChange = (e) => {
-    const newNumber = parseInt(e.target.value)
-    if (newNumber > 0) {
-      this.setState(
-        {
-          numberOfWords: newNumber,
-        },
-        this.reset.bind(this),
-      )
-    }
-  }
-
-  reset = () => {
+  initNextRound = (wordObjs) => {
     let state = this.freshState()
+    state.score = calculateScore(wordObjs, stopTimer())
     this.setState(state)
     this.timerStarted = false
   }
@@ -70,14 +56,10 @@ class App extends React.Component {
     wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
 
   freshState = () => {
-    const numberOfWords = this.state && this.state.numberOfWords
-      ? this.state.numberOfWords
-      : defaultNumberOfWords
     const randomWords = getRandomWords(numberOfWords)
     return {
       typedText: "",
       score: {speed: 0, accuracy: 0},
-      numberOfWords,
       randomWords: randomWords,
       wordObjs: evaluateTypedWords(randomWords, []),
     }
@@ -89,16 +71,6 @@ class App extends React.Component {
         <AppHeader />
         <div className="App">
           <ScoreDisplay score={this.state.score} resetCallback={this.handleResetScore}/>
-          <div hidden className="word-amount">
-            <label>
-              Number of words
-              <input value={this.state.numberOfWords}
-                type="number"
-                min="1"
-                onChange={this.onNumberOfWordsChange}
-              />
-            </label>
-          </div>
           <TextDisplay words={this.state.wordObjs} />
           <input value={this.state.typedText}
             id="text-input"
