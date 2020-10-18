@@ -24,7 +24,6 @@ body {
 .App {
   text-align: center;
   margin-top: 2rem;
-  line-height: 7rem;
 }
 
 .App-logo {
@@ -64,7 +63,7 @@ body {
 
 .text-input {
   width: 50%;
-  margin: 4px;
+  margin-top: 6rem;
   border-style: none;
   border-bottom-style: dashed;
   font-size: xx-large;
@@ -75,7 +74,11 @@ body {
 }
 
 .words-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   font-size: xx-large;
+  margin-top: 6rem;
 }
 
 .appName{
@@ -179,4 +182,16 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.word-amount {
+  color: #fff;
+  line-height: initial;
+  font-size: 1.2rem;
+}
+
+.word-amount input {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  width: 50px;
 }

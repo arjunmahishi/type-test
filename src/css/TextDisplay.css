@@ -4,8 +4,8 @@ html {
 }
 
 html[data-theme="dark"] {
-  --correct: #77db772b;
-  --wrong: #db77772b;
+  --correct: #77db774b;
+  --wrong: #db77774b;
 }
 
 .letter {
@@ -22,4 +22,8 @@ html[data-theme="dark"] {
 
 .letter-inactive {
   background-color: var(--secondary-color);
+}
+
+.letter-space {
+  width: 25px;
 }

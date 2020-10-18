@@ -1,11 +1,11 @@
 import React from 'react';
-import TextDisplay from './components/TextDisplay'
-import './css/App.css'
-import { calculateScore, resetScore } from "./lib/score"
-import { startTimer, stopTimer } from "./lib/timer"
-import { breakText, evaluateTypedWords, getRandomWords, wordStates } from './lib/wordOperations';
-import ScoreDisplay from './components/ScoreDisplay';
-import AppHeader from './components/AppHeader';
+import TextDisplay from './TextDisplay'
+import '../../css/App.css'
+import { calculateScore, resetScore } from "../../lib/score"
+import { startTimer, stopTimer } from "../../lib/timer"
+import { breakText, evaluateTypedWords, getRandomWords, wordStates } from '../../lib/wordOperations';
+import ScoreDisplay from './ScoreDisplay';
+import AppHeader from './AppHeader';
 
 const numberOfWords = 5
 
@@ -27,7 +27,7 @@ class App extends React.Component {
 
     // check if the round is complete
     if (this.isComplete(wordObjs, inputWords)) {
-      this.reset(wordObjs)
+      this.initNextRound(wordObjs)
       return
     }
 
@@ -38,7 +38,7 @@ class App extends React.Component {
     })
   }
 
-  reset = (wordObjs) => {
+  initNextRound = (wordObjs) => {
     let state = this.freshState()
     state.score = calculateScore(wordObjs, stopTimer(), numberOfWords)
     this.setState(state)
@@ -56,7 +56,7 @@ class App extends React.Component {
     wordsToDisplay[wordsToDisplay.length-1].state === wordStates.CORRECT
 
   freshState = () => {
-    let randomWords = getRandomWords(numberOfWords)
+    const randomWords = getRandomWords(numberOfWords)
     return {
       typedText: "",
       score: {speed: 0, accuracy: 0},

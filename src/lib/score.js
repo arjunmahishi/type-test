@@ -4,6 +4,7 @@ var speed = 0;
 var noOfRounds = 0;
 var highestSpeed = 0;
 var lowestSpeed = 99999;
+var speedArr = [];
 
 export const calculateScore = (wordObjs, timeTaken, noOfWords) => {
     let speed = calculateSpeed(noOfWords, timeTaken)
@@ -24,10 +25,13 @@ export const resetScore = () => {
     lowestSpeed = 99999
 }
 
-const calculateSpeed = (noOfWords, sec) => {
+export const getSpeedArr = () => speedArr
+
+export const calculateSpeed = (noOfWords, sec) => {
     let newSpeed = Math.round((noOfWords/sec)*60)
     let avgSpeed = speed === 0 ? newSpeed : Math.round((speed + newSpeed)/2)
     speed = avgSpeed
+    speedArr.push(newSpeed)
     highestSpeed = newSpeed > highestSpeed ? newSpeed : highestSpeed
     lowestSpeed = newSpeed < lowestSpeed ? newSpeed : lowestSpeed
     return avgSpeed

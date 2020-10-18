@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/TextDisplay.css'
+import '../../css/TextDisplay.css'
 
 export default function TextDisplay(props) {
     return (
