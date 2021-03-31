@@ -14,9 +14,6 @@ html[data-theme="dark"] {
   --secondary-color: #282c34;
 }
 
-
-
-
 body {
   background-color: var(--secondary-color)
 }
@@ -71,6 +68,10 @@ body {
   background-color:var(--secondary-color);
   color: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+.text-input:focus {
+  outline: none;
 }
 
 .words-holder {
