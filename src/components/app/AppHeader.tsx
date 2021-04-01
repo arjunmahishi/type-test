@@ -29,6 +29,7 @@ const AppHeader = () => {
       </div>
       <label className="switch">
         <input
+          aria-label="theme-toggle"
           type="checkbox"
           checked={checked}
           onChange={toggleTheme}/>

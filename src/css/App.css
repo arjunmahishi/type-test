@@ -60,7 +60,7 @@ body {
 
 .text-input {
   width: 50%;
-  margin-top: 6rem;
+  margin-top: 3rem;
   border-style: none;
   border-bottom-style: dashed;
   font-size: xx-large;
@@ -79,7 +79,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   font-size: xx-large;
-  margin-top: 6rem;
+  margin-top: 2rem;
 }
 
 .appName{
@@ -195,4 +195,8 @@ input:checked+.slider:before {
   margin-left: 10px;
   font-size: 1.2rem;
   width: 50px;
+}
+
+.wpmReset {
+  margin-top: 6rem;
 }

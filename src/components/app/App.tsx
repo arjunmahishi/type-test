@@ -58,13 +58,16 @@ const App = () => {
     <>
       <AppHeader />
       <div className="App">
-        <ScoreDisplay score={score} resetCallback={handleResetScore}/>
         <TextDisplay words={wordObjs} />
-        <input value={typedText}
+        <input
+          aria-label="text-input"
+          value={typedText}
           id="text-input"
           className="text-input"
           onChange={handleInput}
+          autoFocus
         />
+        <ScoreDisplay score={score} resetCallback={handleResetScore}/>
       </div>
     </>
   )
